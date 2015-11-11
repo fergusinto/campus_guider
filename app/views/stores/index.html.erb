@@ -1,0 +1,6 @@
+<div class="wrapper">
+  <% @stores.each do |store| %>
+    <h1><%= store.name %></h1>
+    <h3><%= store.comment.count %></h3>
+  <% end %>
+</div>
