@@ -1,0 +1,22 @@
+<%= link_to "首頁", root_path, class: "data" %>
+<%= link_to "修改", edit_store_path(@store), class: "data" %>
+<%= link_to "刪除", store_path(@store), method: :delete, data: { confirm: "Are you sure?" }, class: "data" %>
+<div id="store_info">
+  <h1><%= @store.name %></h1>
+  <h3>經緯: <%= @store.longitude %> , <%= @store.latitude %></h3>
+  <h3>地址: <%= $address %></h3>
+  <hr>
+  <p class="data">
+    <i class="fa fa-comments-o"><%= pluralize(@store.comments.count, "Comment") %></i>
+    <div class="col-md-6">
+      <% @comments.each do |comment| %>
+        <div class="comment">
+          <span class="username"><%= comment.user.name %></span>
+          <span class="conten"><%= comment.content %></span>
+          <div class="time_create"><%= time_ago_in_words(comment.created_at) %></div>
+        </div>
+      <% end %>
+      <%= render 'comments/form' %>
+    </div>
+  </p>
+</div>

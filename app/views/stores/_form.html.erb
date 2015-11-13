@@ -1,0 +1,12 @@
+<%= simple_form_for @store do |f| %>
+  <%= f.input :name, label: 'StoreName' %>
+  <%= f.input :longitude %>
+  <%= f.input :latitude %>
+  <%= f.input :zipcode %>
+  <%= f.input :city %>
+  <%= f.input :distric %>
+  <%= f.input :address %>
+  <%= f.input :avatar, as: :file %>
+  <%= f.button :submit, class: "btn btn-default" %>
+  <%= link_to 'Cancel', root_path, class: "btn btn-default" %>
+<% end %>
