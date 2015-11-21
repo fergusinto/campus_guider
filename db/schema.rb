@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151111131502) do
+ActiveRecord::Schema.define(version: 20151113185229) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",              default: "", null: false
@@ -23,15 +23,28 @@ ActiveRecord::Schema.define(version: 20151111131502) do
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true
 
   create_table "comments", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "store_id"
-    t.text    "content"
+    t.integer  "user_id"
+    t.integer  "store_id"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "stores", force: :cascade do |t|
-    t.string "name"
-    t.float  "longitude"
-    t.float  "latitude"
+    t.string   "name"
+    t.float    "longitude"
+    t.float    "latitude"
+    t.integer  "zipcode"
+    t.string   "city"
+    t.string   "distric"
+    t.text     "address"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   create_table "users", force: :cascade do |t|

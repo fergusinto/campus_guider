@@ -1,6 +1,19 @@
 <div class="wrapper">
-  <% @stores.each do |store| %>
-    <h1><%= store.name %></h1>
-    <h3><%= store.comment.count %></h3>
-  <% end %>
+  <%= link_to "CreateNewStore", new_store_path, class: "btn btn-success" %>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <tr>
+        <th></th>
+        <th>StoreName</th>
+        <th>CommentsNumber</th>
+      </tr>
+    <% @stores.each do |store| %>
+      <tr>
+        <th><%= image_tag store.avatar.url(:thumb), class: "icon" %></th>
+        <th><%= link_to store.name, store_path(store) %></th>
+        <th><%= store.comments.count %></th>
+      </tr>
+    <% end %>
+    </table>
+  </div>
 </div>

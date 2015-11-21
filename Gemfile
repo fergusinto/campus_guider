@@ -30,7 +30,9 @@ gem 'rails-pry'
 gem 'devise'
 gem 'paperclip'
 gem 'faker'
-
+gem 'bootstrap-sass', '~> 3.3.5'
+gem 'simple_form'
+gem 'font-awesome-sass', '~> 4.4.0'
 group :development, :test do
   gem 'byebug'
 end

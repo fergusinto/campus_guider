@@ -8,9 +8,36 @@
 </head>
 <body>
   <div class="wrapper">
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <!-- navbar -->
+    <nav class="navbar navbar-light bg-faded">
+      <a class="navbar-brand" href="/">LOGO</a>
+      <% if user_signed_in? %>
+      <ul class="nav navbar-nav" style="float:right">
+        <li class="nav-item active">
+            <a class="nav-link" href="/users/edit"><%= current_user.name %> <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+            <a data-confirm="Bye!?" rel="nofollow" data-method="delete" href="/users/sign_out">LogOut</a>
+        </li>
+      </ul>
+      <% else %>
+      <ul class="nav navbar-nav" style="float:right">
+        <li class="nav-item active">
+            <a class="nav-link" href="/users/sign_in">SugnIn</a>
+        </li>
+        <li class="nav-item">
+            <a href="/users/sign_up" class="nav-link">SignUp</a>
+        </li>
+      </ul>
+      <% end %>
+    </nav>
+    <!-- end -->
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <div class="col-md-10 col-md-offset-1">
+        <%= yield %>
+      </div>
+    </div>
   </div>
 </body>
 </html>
