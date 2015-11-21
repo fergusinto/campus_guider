@@ -7,33 +7,54 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class="wrapper">
+  <div class="cover">
     <!-- navbar -->
-    <nav class="navbar navbar-light bg-faded">
-      <a class="navbar-brand" href="/">LOGO</a>
-      <% if user_signed_in? %>
-      <ul class="nav navbar-nav" style="float:right">
-        <li class="nav-item active">
-            <a class="nav-link" href="/users/edit"><%= current_user.name %> <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-            <a data-confirm="Bye!?" rel="nofollow" data-method="delete" href="/users/sign_out">LogOut</a>
-        </li>
-      </ul>
-      <% else %>
-      <ul class="nav navbar-nav" style="float:right">
-        <li class="nav-item active">
-            <a class="nav-link" href="/users/sign_in">SugnIn</a>
-        </li>
-        <li class="nav-item">
-            <a href="/users/sign_up" class="nav-link">SignUp</a>
-        </li>
-      </ul>
-      <% end %>
-    </nav>
+    <div class="navbar">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/stores"><span>Brand</span></a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <% if user_signed_in? %>
+            <li class="active">
+              <%= link_to current_user.name, edit_user_registration_path %>
+            </li>
+            <li class="active">
+              <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
+            </li>
+            <% else %>
+            <li class="active">
+              <a href="/users/sign_in">SignIn<br></a>
+            </li>
+            <li class="active">
+              <a href="/users/sign_up">SignUp<br></a>
+            </li>
+            <% end %>
+          </ul>
+        </div>
+
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">SignIn</button>
+
+        <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <h2>Log in</h2>
+                <!-- modal -->
+            </div>
+          </div>
+        </div>
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+      </div>
+    </div>
     <!-- end -->
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
       <div class="col-md-10 col-md-offset-1">
         <%= yield %>
       </div>

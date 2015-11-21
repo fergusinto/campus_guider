@@ -1,9 +1,10 @@
 class StoresController < ApplicationController
-  before_action :find_store, only: [:show, :edit, :update, :destroy]
+  before_action :find_store, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @stores = Store.all
+    @users = User.all
+    @stores = Store.all.order("created_at DESC")
   end
 
   def show
@@ -39,9 +40,19 @@ class StoresController < ApplicationController
 
   def destroy
     @store.destory
-    redirect_to root_path
+    redirect_to stores_path
   end
 
+  def upvote
+    # @store.upvote_by current_user
+    @store.vote_by :voter => current_user, :vote => 'like'
+    redirect_to :back
+  end
+
+  def downvote
+    @store.downvote_by current_user
+    redirect_to :back
+  end
   private
     def find_store
       @store = Store.find(params[:id])

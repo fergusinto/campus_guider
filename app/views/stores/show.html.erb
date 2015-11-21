@@ -1,10 +1,16 @@
-<%= link_to "首頁", root_path, class: "data" %>
+<%= link_to "首頁", stores_path, class: "data" %>
 <%= link_to "修改", edit_store_path(@store), class: "data" %>
 <%= link_to "刪除", store_path(@store), method: :delete, data: { confirm: "Are you sure?" }, class: "data" %>
 <div id="store_info">
   <h1><%= @store.name %></h1>
   <h3>經緯: <%= @store.longitude %> , <%= @store.latitude %></h3>
   <h3>地址: <%= $address %></h3>
+  <%= link_to like_store_path(@store), method: :get, class: "data" do %>
+    <i class="fa fa-thumbs-o-up"><%= pluralize(@store.get_upvotes.size, "Like") %></i>
+  <% end %>
+  <%= link_to dislike_store_path(@store), method: :get,class: "data" do%>
+    <i class="fa fa-thumbs-o-down"><%= pluralize(@store.get_downvotes.size, "Dislike") %></i>
+  <% end %>
   <hr>
   <p class="data">
     <i class="fa fa-comments-o"><%= pluralize(@store.comments.count, "Comment") %></i>
