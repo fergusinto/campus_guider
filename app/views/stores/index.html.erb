@@ -1,19 +1,19 @@
 <div class="wrapper">
-  <%= link_to "CreateNewStore", new_store_path, class: "btn btn-success" %>
-  <div class="table-responsive">
-    <table class="table table-striped">
-      <tr>
-        <th></th>
-        <th>StoreName</th>
-        <th>CommentsNumber</th>
-      </tr>
+  <%= link_to "NewStore", new_store_path, class: "btn btn-success" %>
+  <div id="stores" class="transitions-enabled masonry">
     <% @stores.each do |store| %>
-      <tr>
-        <th><%= image_tag store.avatar.url(:thumb), class: "icon" %></th>
-        <th><%= link_to store.name, store_path(store) %></th>
-        <th><%= store.comments.count %></th>
-      </tr>
+      <div class="box panel panel-default">
+        <%= link_to (image_tag store.avatar.url), store %>
+        <div class="panel-body">
+          <%= link_to store.name, store, class: "h2" %>
+          <span>
+            <i class="fa fa-comments-o"><%= store.comments.count %></i>
+          </span>
+          <span>
+            <i class="fa fa-thumbs-o-up"><%= store.get_likes.size %></i>
+          </span>
+        </div>
+      </div>
     <% end %>
-    </table>
   </div>
 </div>

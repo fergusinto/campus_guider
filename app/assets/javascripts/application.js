@@ -12,6 +12,13 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require masonry/jquery.masonry
 //= require bootstrap-sprockets
-//= require turbolinks
 //= require_tree .
+
+$(document).ready(function(){
+  var data = $('#twzipcode').twzipcode();
+  $('#btn').click(function() {
+    console.log($('#twzipcode').twzipcode('data'));
+  });
+});

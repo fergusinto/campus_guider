@@ -33,6 +33,8 @@ gem 'faker'
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'simple_form'
 gem 'font-awesome-sass', '~> 4.4.0'
+gem 'masonry-rails'
+gem 'acts_as_votable', '~> 0.10.0'
 group :development, :test do
   gem 'byebug'
 end
