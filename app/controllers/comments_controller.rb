@@ -11,4 +11,10 @@ class CommentsController < ApplicationController
       redirect_to store_path(@store)
     end
   end
+  def destroy
+    @store = Store.find(params[:store_id])
+    @comment = @store.comments.find(params[:id])
+    @comment.destroy
+    redirect_to @store
+  end
 end

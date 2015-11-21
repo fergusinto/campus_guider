@@ -14,6 +14,9 @@
           <span class="username"><%= comment.user.name %></span>
           <span class="conten"><%= comment.content %></span>
           <div class="time_create"><%= time_ago_in_words(comment.created_at) %></div>
+          <% if current_user = @store.user %>
+            <%= link_to "delete msg", store_comment_path(@store,comment),method: :delete, class: "btn btn-default" %>
+          <% end %>
         </div>
       <% end %>
       <%= render 'comments/form' %>
